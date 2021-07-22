@@ -1,0 +1,17 @@
+{
+  "name": "watch-color",
+  "version": "1.0.6",
+  "description": "",
+  "bin": {
+    "watchColor": "./bin/watch.js"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "c": "node src/index.js",
+    "watch": "watchColor"
+  },
+  "watchFile": "./colors/color.js",
+  "outputDir": "./colors",
+  "author": "",
+  "license": "ISC"
+}
