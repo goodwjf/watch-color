@@ -15,10 +15,10 @@ fs.watch(dir, (event, filename) => {
     exec(cmdStr, (err, stdout, stderr) => {
         if (err){
             console.log(err);
-            console.warn(new Date(),'watch ' + runFilePath + ' color execution failed');
+            console.warn(new Date(),'watch color execution failed');
         } else {
             console.log(stdout);
-            console.warn(new Date(),'watch ' + runFilePath + ' color execution succeed');
+            console.warn(new Date(),'watch color execution succeed');
         }
     });
   }

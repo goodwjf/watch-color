@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const newLine = '\r\n'
+
 const prefix_config = {
   bg: '$--bg-color-',
   border: '$--border-color-',
@@ -13,11 +15,28 @@ let colors = require(path.resolve(watchFile))
 
 function create(k, colorArr) {
   let Arr = []
+  let keyArr = []
   Arr.push(`// ${k}`)
   colorArr.forEach(color => {
-    Arr.push(`${prefix_config[k]}${color.substr(1)}: ${color};`)
+    let scss_key = `${prefix_config[k]}${color.substr(1)}`
+    Arr.push(`${scss_key}: ${color};`)
+    keyArr.push(scss_key)
   })
-  return Arr.join('\n')
+
+  let result = Arr.join(newLine)
+  result += (newLine + createCSS(keyArr))
+  return result
+}
+
+// :root {
+//  --bg-color-000: #{$--bg-color-000};
+// }
+function createCSS(Arr) {
+  let result = `:root { ${newLine}`
+  Arr.forEach(item => {
+    result += `  ${item.substr(1)}: #{${item}}; ${newLine}`
+  })
+  return `${newLine}// css var ${newLine}${result}}`
 }
 
 function run(colors) {

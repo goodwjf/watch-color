@@ -1,12 +1,17 @@
 {
   "name": "watch-color",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "keywords": [
     "watch",
-    "color"
+    "color",
+    "scss",
+    "css"
   ],
-  "repository": "github.com/goodwjf/watch-color",
   "description": "通过检测color文件色值的变化动态生成SCSS色值变量",
+  "repository" :{
+    "type" : "git",
+    "url" : "https://github.com/goodwjf/watch-color.git"
+ },
   "bin": {
     "watchColor": "./bin/watch.js"
   },
