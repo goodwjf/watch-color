@@ -7,25 +7,24 @@ const prefix_config = {
   font: '$--font-color-'
 }
 
-function create(colors) {
+const root_path  = process.cwd()
+const { outputDir, watchFile } = require(root_path + '/package.json')
+let colors = require(path.resolve(watchFile))
+
+function create(k, colorArr) {
   let Arr = []
-  for (let key in prefix_config) {
-    Arr.push(`// ${key}`)
-    colors.forEach(color => {
-      Arr.push(`${prefix_config[key]}${color.substr(1)}: ${color};`)
-    })
-  }
+  Arr.push(`// ${k}`)
+  colorArr.forEach(color => {
+    Arr.push(`${prefix_config[k]}${color.substr(1)}: ${color};`)
+  })
   return Arr.join('\n')
 }
 
-function run() {
-  const root_path  = process.cwd()
-  const { outputDir, watchFile } = require(root_path + '/package.json')
-  const outputFile = path.resolve(outputDir + '/colors.scss')
-
-  let colors = require(path.resolve(watchFile))
-  colors = create(colors)
-  fs.writeFileSync(outputFile, colors, 'utf-8')
+function run(colors) {
+  for (const k in colors) {
+    const outputFile = path.resolve(outputDir + `/${k}.scss`)
+    fs.writeFileSync(outputFile, create(k, colors[k]), 'utf-8')
+  }
 }
- 
-run()
+
+run(colors)

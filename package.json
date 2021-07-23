@@ -1,7 +1,12 @@
 {
   "name": "watch-color",
-  "version": "1.0.6",
-  "description": "",
+  "version": "1.0.7",
+  "keywords": [
+    "watch",
+    "color"
+  ],
+  "repository": "github.com/goodwjf/watch-color",
+  "description": "通过检测color文件色值的变化动态生成SCSS色值变量",
   "bin": {
     "watchColor": "./bin/watch.js"
   },
@@ -12,6 +17,6 @@
   },
   "watchFile": "./colors/color.js",
   "outputDir": "./colors",
-  "author": "",
+  "author": "wangjianfenga1@163.com",
   "license": "ISC"
 }
