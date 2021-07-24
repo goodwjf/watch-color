@@ -1,7 +1,7 @@
 ### 功能描述
 
-通过检测 color.js 文件色值的变化动态生成SCSS色值变量
-
+color.js 文件保存时自动检测color值变化，
+根据依赖动态生成 SCSS | LESS | CSS color变量
 
 ### 安装依赖
 ```node
@@ -27,36 +27,37 @@ npm install watch-color --save-dev
 module.exports = {
   bg: [
     '#00000f',
-  ], // create bg.scss
+  ], // create bg.scss | bg.less 
   font: [
     '#eeeeee',
-  ], // create font.scss
+  ], // create font.scss | font.less
   border: [
     '#ffffff',
-  ], // create border.scss
+  ], // create border.scss | border.less
 }
 
 ```
-### 生成scss变量
+### 生成scss / css变量
 ```scss
+// bg
+$--bg-color-0000ff: #0000ff;
+
+// css var 
+:root { 
+  --bg-color-0000ff: #{$--bg-color-0000ff}; 
+}
+
+```
+
+### 生成less / css变量
+```less
 
 // bg
-$--bg-color-000: #000;
+@--bg-color-0000ff: #0000ff;
 
-// border
-$--border-color-000000: #000000;
-
-// font
-$--font-color-000099: #000099;
-
-```
-### 生成css变量
-```css
-
+// css var 
 :root { 
-  --bg-color-000: #{$--bg-color-000}; 
+  --bg-color-0000ff: ~"@{--bg-color-0000ff}"; 
 }
 
 ```
-
-

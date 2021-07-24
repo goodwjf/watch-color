@@ -1,13 +1,14 @@
 {
   "name": "watch-color",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "keywords": [
     "watch",
     "color",
     "scss",
+    "less",
     "css"
   ],
-  "description": "通过检测color文件色值的变化动态生成SCSS色值变量",
+  "description": "通过检测color文件色值的变化根据依赖动态生成SCSS|LESS|CSS色值变量",
   "repository" :{
     "type" : "git",
     "url" : "https://github.com/goodwjf/watch-color.git"
